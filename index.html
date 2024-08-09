@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Text Editor</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+  </head>
+  <body>
+    <div id="main">
+      <div class="container">
+        <button id="bold"><i class="fa-solid fa-bold"></i></button>
+        <button id="italic"><i class="fa-solid fa-italic"></i></button>
+        <button id="underline">
+          <i class="fa-solid fa-underline"></i>
+        </button>
+        <button id="strike"><i class="fa-solid fa-strikethrough"></i></button>
+        <button id="superscript">
+          <i class="fa-solid fa-superscript"></i>
+        </button>
+        <button id="subscript"><i class="fa-solid fa-subscript"></i></button>
+        <button id="ollist"><i class="fa-solid fa-list-ol"></i></button>
+        <button id="ullist"><i class="fa-solid fa-list-ul"></i></button>
+        <button id="undo"><i class="fa-solid fa-rotate-left"></i></button>
+        <button id="redo"><i class="fa-solid fa-rotate-right"></i></button>
+        <button id="leftalign"><i class="fa-solid fa-align-left"></i></button>
+        <button id="centeralign"><i class="fa-solid fa-align-center"></i></button>
+        <button id="rightalign"><i class="fa-solid fa-align-right"></i></button>
+        <button id="fullalign"><i class="fa-solid fa-align-justify"></i></button>
+        <button id="textindent"><i class="fa-solid fa-indent"></i></button>
+        <button id="textoutdent"><i class="fa-solid fa-outdent"></i></button>
+        
+        <select id="font-name">
+          <option value="">Select Font</option>
+          <option value="Arial">Arial</option>
+          <option value="Courier New">Courier New</option>
+          <option value="Georgia">Georgia</option>
+          <option value="Times New Roman">Times New Roman</option>
+          <option value="Verdana">Verdana</option>
+          <option value="Comic Sans MS">Comic Sans MS</option>
+        </select>
+
+        <select id="font-size">
+          <option value="">Select Font Size</option>
+          <option value="1">Tiny</option>
+          <option value="2">Small</option>
+          <option value="3">Normal</option>
+          <option value="4">Medium</option>
+          <option value="5">Large</option>
+          <option value="6">Extra Large</option>
+          <option value="7">Huge</option>
+        </select>
+        
+        <div class="input">
+          <input type="color" id="forecolor" />
+          <label for="forecolor">Font Color</label>
+        </div>
+        <div class="input">
+          <input type="color" id="backcolor" />
+          <label for="backcolor">Highlight Color</label>
+        </div>
+      </div>
+      <div id="textinput" contenteditable="true"></div>
+    </div>
+
+    <script>
+      // Getting elements
+      let Bbutton = document.getElementById("bold");
+      let Ibutton = document.getElementById("italic");
+      let Ubutton = document.getElementById("underline");
+      let Sbutton = document.getElementById("strike");
+      let Supbutton = document.getElementById("superscript");
+      let Subbutton = document.getElementById("subscript");
+      let Olbutton = document.getElementById("ollist");
+      let Ulbutton = document.getElementById("ullist");
+      let Unbutton = document.getElementById("undo");
+      let Rebutton = document.getElementById("redo");
+      let Labutton = document.getElementById("leftalign");
+      let Cabutton = document.getElementById("centeralign");
+      let Rabutton = document.getElementById("rightalign");
+      let Fabutton = document.getElementById("fullalign");
+      let Tibutton = document.getElementById("textindent");
+      let Tobutton = document.getElementById("textoutdent");
+      let textInput = document.getElementById("textinput");
+      let fontNameSelect = document.getElementById("font-name");
+      let fontSizeSelect = document.getElementById("font-size");
+      let foreColorInput = document.getElementById("forecolor");
+      let backColorInput = document.getElementById("backcolor");
+
+      Bbutton.addEventListener("click", function() { document.execCommand('bold'); });
+      Ibutton.addEventListener("click", function() { document.execCommand('italic'); });
+      Ubutton.addEventListener("click", function() { document.execCommand('underline'); });
+      Sbutton.addEventListener("click", function() { document.execCommand('strikeThrough'); });
+      Supbutton.addEventListener("click", function() { document.execCommand('superscript'); });
+      Subbutton.addEventListener("click", function() { document.execCommand('subscript'); });
+      Olbutton.addEventListener("click", function() { document.execCommand('insertOrderedList'); });
+      Ulbutton.addEventListener("click", function() { document.execCommand('insertUnorderedList'); });
+      Unbutton.addEventListener("click", function() { document.execCommand('undo'); });
+      Rebutton.addEventListener("click", function() { document.execCommand('redo'); });
+      Labutton.addEventListener("click", function() { document.execCommand('justifyleft'); });
+      Cabutton.addEventListener("click", function() { document.execCommand('justifycenter'); });
+      Rabutton.addEventListener("click", function() { document.execCommand('justifyright'); });
+      Fabutton.addEventListener("click", function() { document.execCommand('justifyFull'); });
+      Tibutton.addEventListener("click", function() { document.execCommand('indent'); });
+      Tobutton.addEventListener("click", function() { document.execCommand('outdent'); });
+      fontNameSelect.addEventListener("change", function() {document.execCommand("fontName", false, fontNameSelect.value); });
+      fontSizeSelect.addEventListener("change", function() {document.execCommand("fontSize", false, fontSizeSelect.value); });
+      foreColorInput.addEventListener("input", function() {document.execCommand("foreColor", false, foreColorInput.value); });
+      backColorInput.addEventListener("input", function() {document.execCommand("backColor", false, backColorInput.value); });
+    </script>
+  </body>
+</html>
